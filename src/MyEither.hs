@@ -1,4 +1,7 @@
 module MyEither where
 
-data MyEither a b = MyLeft a | MyRight b
-    deriving Eq
+data MyEither l r = MyLeft l | MyRight r
+    deriving (Eq, Show)
+
+--instance Functor _ where
+--  fmap _ _ = _

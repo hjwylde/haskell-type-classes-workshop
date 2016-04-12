@@ -8,9 +8,9 @@ import Test.HUnit
 
 tests :: Test
 tests = TestList
-    [ TestCase $ show (MyIdentity "foo") @?= "MyIdentity: \"foo\""
+    [ TestCase $ show (MyIdentity "foo") @?= "MyIdentity \"foo\""
     , TestCase $ show (MyNothing :: MyMaybe String) @?= "MyNothing"
-    , TestCase $ show (MyJust "foo") @?= "MyJust: \"foo\""
-    , TestCase $ show (MyLeft "foo" :: MyEither String String) @?= "MyLeft: \"foo\""
-    , TestCase $ show (MyRight "foo" :: MyEither String String) @?= "MyRight: \"foo\""
+    , TestCase $ show (MyJust "foo") @?= "MyJust \"foo\""
+    , TestCase $ show (MyLeft "foo" :: MyEither String String) @?= "MyLeft \"foo\""
+    , TestCase $ show (MyRight "foo" :: MyEither String String) @?= "MyRight \"foo\""
     ]
