@@ -34,6 +34,7 @@ library
         MyEither
         MyIdentity
         MyMaybe
+        Parser
         SimpleRuby
 
     default-language:   Haskell2010
