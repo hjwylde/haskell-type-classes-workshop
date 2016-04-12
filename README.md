@@ -18,8 +18,9 @@ stack setup && stack build && stack exec haskell-workshop
 4. Parsing
 5. Reader monad
 6. Writer monad
+7. Where to next?
 
-### Type classes
+### 1. Type classes
 
 ```bash
 git checkout toc/1
@@ -33,7 +34,7 @@ Using `MyIdentity`, `MyMaybe` and `MyEither`:
 * Deriving the `Show` type class
 * Writing `Show` type class instances *exercise*
 
-### Functors, applicatives and monads
+### 2. Functors, applicatives and monads
 
 ```bash
 git checkout toc/2
@@ -47,7 +48,7 @@ Using `MyIdentity`, `MyMaybe` and `MyEither`:
 
 * Writing `Functor`, `Applicative` and `Monad` instances *exercise*
 
-### Simple Ruby
+### 3. Simple Ruby
 
 ```bash
 git checkout toc/3
@@ -59,7 +60,7 @@ Using `Statement` and `Expression`:
 
 * Writing `Show` type class instances
 
-### Parsing
+### 4. Parsing
 
 ```bash
 git checkout toc/4
@@ -76,7 +77,7 @@ Using `Parser`:
 * `Alternative` definition and type class instance for `Parser`
 * Extending Simple Ruby
 
-### Reader monad
+### 5. Reader monad
 
 ```bash
 git checkout toc/5
@@ -89,7 +90,7 @@ Using `Reader`:
 * Writing the `Reader` definition and type classes *exercise*
 * Writing a `reduce` function for Simple Ruby *exercise*
 
-### Writer monad
+### 6. Writer monad
 
 ```bash
 git checkout toc/6
@@ -101,3 +102,8 @@ Using `Writer`:
 
 * Writing the `Writer` definition and type classes *exercise*
 * Adding a `print` function to lambda calculus and `reduce`
+
+### 7. Where to next?
+
+* State monad
+* Monad transformers (ReaderT, WriterT, StateT)
