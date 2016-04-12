@@ -5,3 +5,7 @@ data MyMaybe a = MyJust a | MyNothing
 
 --instance Functor _ where
 --  fmap _ _ = _
+
+instance Functor MyMaybe where
+  fmap _ MyNothing = MyNothing
+  fmap f (MyJust a) = MyJust $ f a

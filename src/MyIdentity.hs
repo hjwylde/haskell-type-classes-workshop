@@ -5,3 +5,6 @@ data MyIdentity a = MyIdentity a
 
 --instance Functor _ where
 --  fmap _ _ = _
+
+instance Functor MyIdentity where
+  fmap f (MyIdentity a) = MyIdentity $ f a
