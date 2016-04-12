@@ -16,3 +16,11 @@ data MyIdentity a = MyIdentity a
 
 instance Functor MyIdentity where
   fmap f (MyIdentity a) = MyIdentity $ f a
+
+instance Applicative MyIdentity where
+    pure a = MyIdentity a
+
+    (MyIdentity f) <*> fB = fmap f fB
+
+instance Monad MyIdentity where
+    (MyIdentity a) >>= f = f a
