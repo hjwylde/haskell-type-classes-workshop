@@ -1,8 +1,10 @@
 module Main where
 
+import Control.Monad
+
 import qualified Toc1
 
 import Test.HUnit
 
 main :: IO ()
-main = runTestTT Toc1.tests >> return ()
+main = void $ runTestTT Toc1.tests
