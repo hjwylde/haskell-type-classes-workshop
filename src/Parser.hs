@@ -9,16 +9,13 @@ import MyEither
 -- from parsing (MyRight).
 newtype Parser a = Parser { runParser :: String -> MyEither String (a, String) }
 
-instance Functor Parser where
-    fmap _ _ = _
+--instance Functor Parser where
+--    fmap _ _ = _
 
-instance Applicative Parser where
-    pure _ = _
+--instance Applicative Parser where
+--    pure _ = _
 
-    _ <*> _ = _
-
-instance Monad Parser where
-    _ >>= _ = _
+--    _ <*> _ = _
 
 -- Runs the given parser and expects it to consume the input fully.
 parse :: Parser a -> String -> MyEither String a
@@ -37,13 +34,16 @@ parser f = Parser $ \input -> case uncons input of
     Nothing             -> MyLeft "unexpected end of input"
     Just (head, tail)   -> f (head, tail)
 
+whiteSpace :: Parser ()
+whiteSpace = Parser $ \input -> return $ first (const ()) (span isSpace input)
+
 -- Parses an identifier.
 -- An identifier starts with an alpha character and is followed by 0 or more alpha numeric
 -- characters.
 identifier :: Parser String
 identifier = parser $ \(head, tail) -> if isAlpha head
     then return $ first (head:) (span isAlphaNum tail)
-    else MyLeft $ "expecting identifier, but found " ++ [head]
+    else MyLeft $ "expecting an identifier, but found " ++ [head]
 
 -- Parses the given keyword.
 keyword :: String -> Parser ()
@@ -52,13 +52,13 @@ keyword keyword = Parser $ \input -> do
 
     if identifier' == keyword
         then return $ ((), leftovers)
-        else MyLeft $ "expected keyword " ++ keyword ++ ", but found " ++ identifier'
+        else MyLeft $ "expecting keyword " ++ keyword ++ ", but found " ++ identifier'
 
 -- Parses the given symbol.
 symbol :: Char -> Parser ()
 symbol c = parser $ \(head, tail) -> if head == c
     then return ((), tail)
-    else MyLeft $ "expecting " ++ [c] ++ ", but found " ++ [head]
+    else MyLeft $ "expecting symbol " ++ [c] ++ ", but found " ++ [head]
 
 -- Parses an integer.
 -- An integer is 1 or more digits.

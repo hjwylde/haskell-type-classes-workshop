@@ -2,6 +2,7 @@ module Main where
 
 import qualified Toc1
 import qualified Toc2
+import qualified Toc4
 
 import Test.HUnit
 
@@ -11,4 +12,5 @@ main = runTestTT tests >> return ()
         tests = TestList
             [ Toc1.tests
             , Toc2.tests
+            , Toc4.tests
             ]

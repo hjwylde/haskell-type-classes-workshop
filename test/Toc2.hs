@@ -13,8 +13,6 @@ tests = TestList
     , myEitherTests
     ]
 
-
-
 myIdentityTests :: Test
 myIdentityTests = TestList
     -- Functor tests
