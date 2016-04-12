@@ -24,7 +24,7 @@ myIdentityTests = TestList
     , TestCase $ show (pure (+ 1) <*> MyIdentity 1) @?= "MyIdentity 2"
 
     -- Monad tests
-    , TestCase $ show (return 1) @?= "MyIdentity 1"
+    , TestCase $ show (return 1 :: MyIdentity Int) @?= "MyIdentity 1"
     , TestCase $ show (MyIdentity 1 >>= \i -> MyIdentity $ i + 1) @?= "MyIdentity 2"
     ]
 
