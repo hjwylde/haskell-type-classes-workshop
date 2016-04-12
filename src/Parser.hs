@@ -51,7 +51,7 @@ keyword keyword = Parser $ \input -> do
     (identifier', leftovers) <- runParser identifier input
 
     if identifier' == keyword
-        then return $ ((), leftovers)
+        then return ((), leftovers)
         else MyLeft $ "expecting keyword " ++ keyword ++ ", but found " ++ identifier'
 
 -- Parses the given symbol.

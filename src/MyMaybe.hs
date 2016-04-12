@@ -19,7 +19,7 @@ instance Functor MyMaybe where
   fmap f (MyJust a) = MyJust $ f a
 
 instance Applicative MyMaybe where
-    pure a = MyJust a
+    pure = MyJust
 
     (MyJust f) <*> fB   = fmap f fB
     _ <*> _             = MyNothing

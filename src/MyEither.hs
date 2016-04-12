@@ -19,7 +19,7 @@ instance Functor (MyEither l) where
     fmap f (MyRight r)  = MyRight $ f r
 
 instance Applicative (MyEither l) where
-    pure r = MyRight r
+    pure = MyRight
 
     (MyRight f) <*> fB  = fmap f fB
     (MyLeft l) <*> _    = MyLeft l
