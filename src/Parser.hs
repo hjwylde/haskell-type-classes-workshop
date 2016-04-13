@@ -9,13 +9,16 @@ import MyEither
 -- from parsing (MyRight).
 newtype Parser a = Parser { runParser :: String -> MyEither String (a, String) }
 
---instance Functor Parser where
---    fmap _ _ = _
+instance Functor Parser where
+    fmap f parser = Parser $ \input -> first f <$> runParser parser input
 
---instance Applicative Parser where
---    pure _ = _
+instance Applicative Parser where
+    pure a = Parser $ \input -> return (a, input)
 
---    _ <*> _ = _
+    fA <*> fB = Parser $ \input -> do
+        (f, leftovers) <- runParser fA input
+
+        runParser (f <$> fB) leftovers
 
 -- Runs the given parser and expects it to consume the input fully.
 parse :: Parser a -> String -> MyEither String a
