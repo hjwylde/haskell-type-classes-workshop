@@ -68,3 +68,26 @@ class Applicative m => Monad m where
     -- Called "sequence"
     (>>) :: m a -> m b -> m b
     (>>) = (*>)
+
+class Applicative f => Alternative f where
+    -- Minimum complete definition: empty & <|>
+
+    -- The identity of '<|>'
+    empty :: f a
+
+    -- An associative binary operation
+    (<|>) :: f a -> f a -> f a
+
+    -- One or more.
+    some :: f a -> f [a]
+    some v = some_v
+        where
+            many_v = some_v <|> pure []
+            some_v = (fmap (:) v) <*> many_v
+
+    -- Zero or more.
+    many :: f a -> f [a]
+    many v = many_v
+        where
+            many_v = some_v <|> pure []
+            some_v = (fmap (:) v) <*> many_v

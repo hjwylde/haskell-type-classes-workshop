@@ -1,5 +1,7 @@
 module Parser where
 
+import Control.Applicative
+
 import Data.Char
 import Data.List
 
@@ -25,6 +27,11 @@ instance Applicative Parser where
         (f, leftovers) <- runParser fA input
 
         runParser (f <$> fB) leftovers
+
+instance Alternative Parser where
+    empty = Parser . const $ MyLeft "empty parser"
+
+    lhs <|> rhs = Parser $ \input -> runParser lhs input <|> runParser rhs input
 
 -- Runs the given parser and expects it to consume the input fully.
 parse :: Parser a -> String -> MyEither String a

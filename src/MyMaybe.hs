@@ -1,5 +1,7 @@
 module MyMaybe where
 
+import Control.Applicative
+
 data MyMaybe a = MyJust a | MyNothing
     deriving (Eq, Show)
 
@@ -16,3 +18,9 @@ instance Applicative MyMaybe where
 instance Monad MyMaybe where
     (MyJust a) >>= f    = f a
     _ >>= _             = MyNothing
+
+instance Alternative MyMaybe where
+    empty = MyNothing
+
+    MyNothing <|> rhs = rhs
+    lhs <|> _       = lhs

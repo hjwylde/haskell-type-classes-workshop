@@ -1,5 +1,7 @@
 module MyEither where
 
+import Control.Applicative
+
 data MyEither l r = MyLeft l | MyRight r
     deriving (Eq, Show)
 
@@ -16,3 +18,9 @@ instance Applicative (MyEither l) where
 instance Monad (MyEither l) where
     (MyRight r) >>= f   = f r
     (MyLeft l) >>= _    = MyLeft l
+
+instance Monoid l => Alternative (MyEither l) where
+    empty = MyLeft mempty
+
+    (MyLeft _) <|> rhs  = rhs
+    lhs <|> _           = lhs
