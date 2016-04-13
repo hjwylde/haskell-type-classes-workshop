@@ -33,7 +33,7 @@ git checkout toc/1
 Using `MyIdentity`, `MyMaybe` and `MyEither`:
 
 * Deriving the `Show` type class
-* Writing `Show` type class instances *exercise*
+* **Exercise** Writing `Show` type class instances
 
 **Tip:**
 Have a separate terminal open running `stack build --test --file-watch` for live updates on how
@@ -52,7 +52,7 @@ git checkout toc/2
 Using `MyIdentity`, `MyMaybe` and `MyEither`:
 
 * Kinds
-* Writing `Functor`, `Applicative` and `Monad` instances *exercise*
+* **Exercise** Writing `Functor`, `Applicative` and `Monad` instances
 
 ### 3. Simple Java
 
@@ -77,27 +77,25 @@ git checkout toc/4a
 
 Using `Parser`:
 
-* Writing `Functor`, `Applicative` and `Monad` instances *exercise*
+* **Exercise** Writing `Functor`, `Applicative` and `Monad` instances
 * Utility functions to work with `Parser`
 
 ```bash
 git checkout toc/4b
 ```
 
-* Writing a `Statement` and `Expression` parser *exercise*
+* **Exercise** Writing a `Statement` and `Expression` parser
 
 ```bash
 git checkout toc/4c
 ```
 
 * `Alternative` definition and type class instance for `Parser`
-* Writing a `Program` parser *exercise*
+* **Exercise** Writing a `Program` parser
 
-```bash
-git checkout toc/4d
-```
+*There is no `git checkout` for this next exercise.*
 
-* Extending Simple Java with assignments and a post-increment function
+* **Exercise** Extending Simple Java with assignments and a post-increment function
 
 ### 5. State monad
 
@@ -109,20 +107,18 @@ git checkout toc/5
 
 Using `State`:
 
-* Writing the `State` definition and type classes *exercise*
-* Writing a `run` function for Simple Java *exercise*
+* **Exercise** Writing the `State` definition and type classes
+* **Exercise** Writing a `run` function for Simple Java
 
 ### 6. Writer monad
 
-```bash
-git checkout toc/6
-```
+*There is no `git checkout` for the next exercise.*
 
 * `Writer` concept
 
 Using `Writer`:
 
-* Writing the `Writer` definition and type classes *exercise*
+* **Exercise** Writing the `Writer` definition and type classes
 * Updating the `run` function to use the `Writer` monad
 
 ### 7. Where to next?
