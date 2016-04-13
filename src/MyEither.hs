@@ -13,7 +13,3 @@ data MyEither l r = MyLeft l | MyRight r
 
 --instance Monad _ where
 --  _ >>= _ = _
-
-instance Functor (MyEither l) where
-    fmap _ (MyLeft l)   = MyLeft l
-    fmap f (MyRight r)  = MyRight $ f r

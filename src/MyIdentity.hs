@@ -13,6 +13,3 @@ data MyIdentity a = MyIdentity a
 
 --instance Monad _ where
 --  _ >>= _ = _
-
-instance Functor MyIdentity where
-  fmap f (MyIdentity a) = MyIdentity $ f a
