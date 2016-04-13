@@ -4,7 +4,7 @@ import Control.Monad
 
 import qualified Toc1
 import qualified Toc2
-import qualified Toc4
+import qualified Toc4a
 
 import Test.HUnit
 
@@ -14,5 +14,5 @@ main = void $ runTestTT tests
         tests = TestList
             [ Toc1.tests
             , Toc2.tests
-            , Toc4.tests
+            , Toc4a.tests
             ]
