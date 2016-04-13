@@ -6,6 +6,7 @@ import qualified Toc1
 import qualified Toc2
 import qualified Toc4a
 import qualified Toc4b
+import qualified Toc4c
 
 import Test.HUnit
 
@@ -17,4 +18,5 @@ main = void $ runTestTT tests
             , Toc2.tests
             , Toc4a.tests
             , Toc4b.tests
+            , Toc4c.tests
             ]
