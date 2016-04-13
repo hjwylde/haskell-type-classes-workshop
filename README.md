@@ -60,9 +60,9 @@ Using `MyIdentity`, `MyMaybe` and `MyEither`:
 git checkout toc/3
 ```
 
-* Statements and expressions
+* Programs, statements and expressions
 
-Using `Statement` and `Expression`:
+Using `Program`, `Statement` and `Expression`:
 
 * Writing `Show` type class instances
 
@@ -84,9 +84,9 @@ Using `Parser`:
 git checkout toc/4b
 ```
 
-* Writing a `Statement` and `Expression` parser *exercise*
+* Writing a `Program`, `Statement` and `Expression` parser *exercise*
 * `Alternative` definition and type class instance for `Parser`
-* Extending Simple Java
+* Extending Simple Java with assignments and a post-increment function
 
 ### 5. State monad
 

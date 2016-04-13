@@ -18,7 +18,7 @@ instance Functor MyIdentity where
   fmap f (MyIdentity a) = MyIdentity $ f a
 
 instance Applicative MyIdentity where
-    pure a = MyIdentity a
+    pure = MyIdentity
 
     (MyIdentity f) <*> fB = fmap f fB
 
