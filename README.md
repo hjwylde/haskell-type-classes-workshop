@@ -84,8 +84,19 @@ Using `Parser`:
 git checkout toc/4b
 ```
 
-* Writing a `Program`, `Statement` and `Expression` parser *exercise*
+* Writing a `Statement` and `Expression` parser *exercise*
+
+```bash
+git checkout toc/4c
+```
+
 * `Alternative` definition and type class instance for `Parser`
+* Writing a `Program` parser *exercise*
+
+```bash
+git checkout toc/4d
+```
+
 * Extending Simple Java with assignments and a post-increment function
 
 ### 5. State monad
