@@ -34,6 +34,10 @@ Using `MyIdentity`, `MyMaybe` and `MyEither`:
 * Deriving the `Show` type class
 * Writing `Show` type class instances *exercise*
 
+**Tip:**
+Have a separate terminal open running `stack build --test --file-watch` for live updates on how
+you're going.
+
 ### 2. Functors, applicatives and monads
 
 ```bash
