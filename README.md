@@ -3,6 +3,7 @@
 A Haskell workshop on type classes for Powershop.
 
 While I'm introducing everything:
+
 ```bash
 brew install haskell-stack
 git clone https://github.com/hjwylde/haskell-type-classes-workshop
@@ -14,9 +15,9 @@ stack setup && stack build && stack exec haskell-workshop
 
 1. Type classes
 2. Functors, applicatives and monads
-3. Simple Ruby
+3. Simple Java
 4. Parsing
-5. Reader monad
+5. State monad
 6. Writer monad
 7. Where to next?
 
@@ -50,9 +51,10 @@ git checkout toc/2
 
 Using `MyIdentity`, `MyMaybe` and `MyEither`:
 
+* Kinds
 * Writing `Functor`, `Applicative` and `Monad` instances *exercise*
 
-### 3. Simple Ruby
+### 3. Simple Java
 
 ```bash
 git checkout toc/3
@@ -67,7 +69,7 @@ Using `Statement` and `Expression`:
 ### 4. Parsing
 
 ```bash
-git checkout toc/4
+git checkout toc/4a
 ```
 
 * A brief explanation of lexing, abstract syntax trees and parsing
@@ -77,22 +79,27 @@ Using `Parser`:
 
 * Writing `Functor`, `Applicative` and `Monad` instances *exercise*
 * Utility functions to work with `Parser`
+
+```bash
+git checkout toc/4b
+```
+
 * Writing a `Statement` and `Expression` parser *exercise*
 * `Alternative` definition and type class instance for `Parser`
-* Extending Simple Ruby
+* Extending Simple Java
 
-### 5. Reader monad
+### 5. State monad
 
 ```bash
 git checkout toc/5
 ```
 
-* `Reader` concept
+* `State` concept
 
-Using `Reader`:
+Using `State`:
 
-* Writing the `Reader` definition and type classes *exercise*
-* Writing a `reduce` function for Simple Ruby *exercise*
+* Writing the `State` definition and type classes *exercise*
+* Writing a `run` function for Simple Java *exercise*
 
 ### 6. Writer monad
 
@@ -105,9 +112,9 @@ git checkout toc/6
 Using `Writer`:
 
 * Writing the `Writer` definition and type classes *exercise*
-* Adding a `print` function to lambda calculus and `reduce`
+* Updating the `run` function to use the `Writer` monad
 
 ### 7. Where to next?
 
-* State monad
+* Reader monad
 * Monad transformers (ReaderT, WriterT, StateT)
