@@ -85,7 +85,7 @@ int = parser $ \(head, tail) -> if isDigit head
 
 -- Parses a program
 program :: Parser Program
-program = undefined
+program = Program <$> (whiteSpace *> many statement)
 
 -- Parses a statement
 statement :: Parser Statement
