@@ -85,6 +85,18 @@ sampleStatement2 = PrintStatement $ ValueExpression 2
 inputStatement2 :: String
 inputStatement2 = "print 2\n;"
 
+sampleStatement3 :: Statement
+sampleStatement3 = PrintStatement $ ValueExpression 2
+
+inputStatement3 :: String
+inputStatement3 = "print 2;;"
+
+sampleStatement4 :: Statement
+sampleStatement4 = PrintStatement $ ValueExpression 2
+
+inputStatement4 :: String
+inputStatement4 = "print 2; "
+
 errorStatement1 :: String
 errorStatement1 = "print 2"
 
@@ -102,6 +114,12 @@ sampleExpression2 = ValueExpression 2
 
 inputExpression2 :: String
 inputExpression2 = "2"
+
+sampleExpression3 :: Expression
+sampleExpression3 = ValueExpression 2
+
+inputExpression3 :: String
+inputExpression3 = "2 "
 
 errorExpression1 :: String
 errorExpression1 = ""
