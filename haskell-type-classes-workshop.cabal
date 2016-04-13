@@ -35,7 +35,7 @@ library
         MyIdentity
         MyMaybe
         Parser
-        SimpleRuby
+        SimpleJava
 
     default-language:   Haskell2010
     build-depends:
