@@ -30,6 +30,7 @@ executable haskell-workshop
 library
     hs-source-dirs:     src/
     exposed-modules:
+        Definition
         MyEither
         MyIdentity
         MyMaybe
