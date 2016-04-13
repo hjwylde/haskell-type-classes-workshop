@@ -9,6 +9,11 @@ import MyEither
 -- from parsing (MyRight).
 newtype Parser a = Parser { runParser :: String -> MyEither String (a, String) }
 
+-- Applies a function to the first element in a tuple.
+-- This method should help in writing the following instances.
+first :: (a -> c) -> (a, b) -> (c, b)
+first f (a, b) = (f a, b)
+
 --instance Functor Parser where
 --    fmap _ _ = _
 
@@ -66,7 +71,3 @@ int :: Parser Int
 int = parser $ \(head, tail) -> if isDigit head
     then return $ first (read . (head:)) (span isDigit tail)
     else MyLeft $ "expecting a digit, but found " ++ [head]
-
--- Applies a function to the first element in a tuple.
-first :: (a -> c) -> (a, b) -> (c, b)
-first f (a, b) = (f a, b)
