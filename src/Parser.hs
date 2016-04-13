@@ -5,6 +5,8 @@ import Data.List
 
 import MyEither
 
+import SimpleJava
+
 -- A parser takes some input and returns either an error (MyLeft), or the result with any leftovers
 -- from parsing (MyRight).
 newtype Parser a = Parser { runParser :: String -> MyEither String (a, String) }
@@ -73,3 +75,15 @@ int :: Parser Int
 int = parser $ \(head, tail) -> if isDigit head
     then return $ first (read . (head:)) (span isDigit tail)
     else MyLeft $ "expecting a digit, but found " ++ [head]
+
+-- Parses a program
+program :: Parser Program
+program = undefined
+
+-- Parses a statement
+statement :: Parser Statement
+statement = undefined
+
+-- Parses an expression
+expression :: Parser Expression
+expression = undefined
