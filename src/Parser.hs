@@ -89,8 +89,8 @@ program = undefined
 
 -- Parses a statement
 statement :: Parser Statement
-statement = PrintStatement <$> (keyword "print" *> whiteSpace *> expression <* whiteSpace <* symbol ';')
+statement = PrintStatement <$> (keyword "print" *> whiteSpace *> expression <* whiteSpace <* some (symbol ';' <* whiteSpace))
 
 -- Parses an expression
 expression :: Parser Expression
-expression = ValueExpression <$> int
+expression = ValueExpression <$> (int <* whiteSpace)

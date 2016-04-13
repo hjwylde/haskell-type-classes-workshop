@@ -64,6 +64,12 @@ inputProgram4 = unlines
     , "print 2;"
     ]
 
+sampleProgram5 :: Program
+sampleProgram5 = Program []
+
+inputProgram5 :: String
+inputProgram5 = " "
+
 errorProgram1 :: String
 errorProgram1 = "print 1"
 
