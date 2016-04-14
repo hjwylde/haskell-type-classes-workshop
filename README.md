@@ -95,7 +95,7 @@ git checkout toc/4c
 
 *There is no `git checkout` for this next exercise.*
 
-* **Exercise** Extending Simple Java with assignments and a post-increment function
+* **Exercise** Extending Simple Java with assignments and a pre-increment function
 
 ### 5. State monad
 

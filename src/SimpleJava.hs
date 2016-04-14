@@ -6,17 +6,21 @@ data Program = Program [Statement]
 instance Show Program where
     show (Program stmts) = unlines $ map show stmts
 
-data Statement = PrintStatement Expression
+data Statement  = PrintStatement Expression
+                | AssignmentStatement String Expression
     deriving Eq
 
 instance Show Statement where
     show (PrintStatement expr) = "print " ++ show expr ++ ";"
+    show (AssignmentStatement var expr) = "let " ++ var ++ " = " ++ show expr ++ ";"
 
 data Expression = ValueExpression Int
+                | PreIncrementExpression Expression
     deriving Eq
 
 instance Show Expression where
     show (ValueExpression i) = show i
+    show (PreIncrementExpression expr) = "++" ++ show expr
 
 sampleProgram1 :: Program
 sampleProgram1 = Program

@@ -20,8 +20,8 @@ statementParserTests = TestList
     , TestCase $ parse statement inputStatement2 @?= MyRight sampleStatement2
     , TestCase $ parse statement inputStatement3 @?= MyRight sampleStatement3
     , TestCase $ parse statement inputStatement4 @?= MyRight sampleStatement4
-    , TestCase $ parse statement errorStatement1 @?= MyLeft "unexpected end of input"
-    , TestCase $ parse statement errorStatement2 @?= MyLeft "expecting keyword print, but found rint"
+    , TestCase $ parse statement errorStatement1 @?= MyLeft "expecting keyword let, but found print"
+    , TestCase $ parse statement errorStatement2 @?= MyLeft "expecting keyword let, but found rint"
     ]
 
 expressionParserTests :: Test

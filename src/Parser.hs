@@ -3,9 +3,11 @@ module Parser where
 import Control.Applicative
 
 import Data.Char
-import Data.List
+import Data.List hiding (any)
 
 import MyEither
+
+import Prelude hiding (any)
 
 import SimpleJava
 
@@ -83,14 +85,33 @@ int = parser $ \(head, tail) -> if isDigit head
     then return $ first (read . (head:)) (span isDigit tail)
     else MyLeft $ "expecting a digit, but found " ++ [head]
 
+any :: Alternative f => [f a] -> f a
+any alts = foldl (<|>) empty alts
+
 -- Parses a program
 program :: Parser Program
 program = Program <$> (whiteSpace *> many statement)
 
 -- Parses a statement
 statement :: Parser Statement
-statement = PrintStatement <$> (keyword "print" *> whiteSpace *> expression <* whiteSpace <* some (symbol ';' <* whiteSpace))
+statement = any
+    [ printStatement
+    , assignmentStatement
+    ]
+    where
+        statement parser = parser <* whiteSpace <* some (symbol ';' <* whiteSpace)
+
+        printStatement = statement $ PrintStatement <$> (keyword "print" *> whiteSpace *> expression)
+
+        assignmentStatement = statement $ AssignmentStatement <$> (keyword "let" *> whiteSpace *> identifier) <*> (symbol '=' *> expression)
 
 -- Parses an expression
 expression :: Parser Expression
-expression = ValueExpression <$> (int <* whiteSpace)
+expression = any
+    [ preIncrementExpression
+    , valueExpression
+    ]
+    where
+        valueExpression = ValueExpression <$> (int <* whiteSpace)
+
+        preIncrementExpression = PreIncrementExpression <$> (symbol '+' *> symbol '+' *> expression)
