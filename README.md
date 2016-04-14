@@ -108,7 +108,7 @@ git checkout toc/5
 Using `State`:
 
 * **Exercise** Writing the `State` definition and type classes
-* **Exercise** Writing a `run` function for Simple Java
+* **Exercise** Writing `simplifyProgram`, `simplifyStatement` and `simplifyExpression` functions for Simple Java
 
 ### 6. Writer monad
 

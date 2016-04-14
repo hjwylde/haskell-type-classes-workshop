@@ -31,6 +31,7 @@ library
     hs-source-dirs:     src/
     exposed-modules:
         Definition
+        Executor
         MyEither
         MyIdentity
         MyMaybe
