@@ -1,9 +1,25 @@
-module Definitions where
+module Definition where
 
-import Prelude hiding (Applicative, Functor, fmap, pure, (*>), (<$), (<*>))
+import Prelude hiding (Applicative, Eq, Functor, Show, fmap, pure, show, (*>), (/=), (<$), (<*>),
+                (==))
 
--- N.B., there are a number of /laws/ that type class instances should often follow. I have not
--- listed these here, if you're interested look up the documentation.
+class Show a where
+    -- Minimum complete definition: show
+
+    show :: a -> String
+
+class Eq a where
+    -- Minimum complete definition: (==) or (/=)
+
+    (==) :: a -> a -> Bool
+    lhs == rhs = not $ lhs /= rhs
+
+    (/=) :: a -> a -> Bool
+    lhs /= rhs = not $ lhs == rhs
+
+-- N.B., often with type classes such as these they are defined with /laws/ that you are expected to
+-- obey when writing instances. I have not listed these laws here, if oyu're interested you may look
+-- up the documentation for them.
 
 class Functor f where
     -- Minimum complete definition: fmap
@@ -52,3 +68,26 @@ class Applicative m => Monad m where
     -- Called "sequence"
     (>>) :: m a -> m b -> m b
     (>>) = (*>)
+
+class Applicative f => Alternative f where
+    -- Minimum complete definition: empty & <|>
+
+    -- The identity of '<|>'
+    empty :: f a
+
+    -- An associative binary operation
+    (<|>) :: f a -> f a -> f a
+
+    -- One or more.
+    some :: f a -> f [a]
+    some v = some_v
+        where
+            many_v = some_v <|> pure []
+            some_v = (fmap (:) v) <*> many_v
+
+    -- Zero or more.
+    many :: f a -> f [a]
+    many v = many_v
+        where
+            many_v = some_v <|> pure []
+            some_v = (fmap (:) v) <*> many_v

@@ -1,21 +1,39 @@
 module Parser where
 
+import Control.Applicative
+
 import Data.Char
-import Data.List
+import Data.List hiding (any)
 
 import MyEither
+
+import Prelude hiding (any)
+
+import SimpleJava
 
 -- A parser takes some input and returns either an error (MyLeft), or the result with any leftovers
 -- from parsing (MyRight).
 newtype Parser a = Parser { runParser :: String -> MyEither String (a, String) }
 
---instance Functor Parser where
---    fmap _ _ = _
+-- Applies a function to the first element in a tuple.
+first :: (a -> c) -> (a, b) -> (c, b)
+first f (a, b) = (f a, b)
 
---instance Applicative Parser where
---    pure _ = _
+instance Functor Parser where
+    fmap f parser = Parser $ \input -> first f <$> runParser parser input
 
---    _ <*> _ = _
+instance Applicative Parser where
+    pure a = Parser $ \input -> return (a, input)
+
+    fA <*> fB = Parser $ \input -> do
+        (f, leftovers) <- runParser fA input
+
+        runParser (f <$> fB) leftovers
+
+instance Alternative Parser where
+    empty = Parser . const $ MyLeft "empty parser"
+
+    lhs <|> rhs = Parser $ \input -> runParser lhs input <|> runParser rhs input
 
 -- Runs the given parser and expects it to consume the input fully.
 parse :: Parser a -> String -> MyEither String a
@@ -67,6 +85,33 @@ int = parser $ \(head, tail) -> if isDigit head
     then return $ first (read . (head:)) (span isDigit tail)
     else MyLeft $ "expecting a digit, but found " ++ [head]
 
--- Applies a function to the first element in a tuple.
-first :: (a -> c) -> (a, b) -> (c, b)
-first f (a, b) = (f a, b)
+any :: Alternative f => [f a] -> f a
+any alts = foldl (<|>) empty alts
+
+-- Parses a program
+program :: Parser Program
+program = Program <$> (whiteSpace *> many statement)
+
+-- Parses a statement
+statement :: Parser Statement
+statement = any
+    [ printStatement
+    , assignmentStatement
+    ]
+    where
+        statement parser = parser <* whiteSpace <* some (symbol ';' <* whiteSpace)
+
+        printStatement = statement $ PrintStatement <$> (keyword "print" *> whiteSpace *> expression)
+
+        assignmentStatement = statement $ AssignmentStatement <$> (keyword "let" *> whiteSpace *> identifier) <*> (symbol '=' *> expression)
+
+-- Parses an expression
+expression :: Parser Expression
+expression = any
+    [ preIncrementExpression
+    , valueExpression
+    ]
+    where
+        valueExpression = ValueExpression <$> (int <* whiteSpace)
+
+        preIncrementExpression = PreIncrementExpression <$> (symbol '+' *> symbol '+' *> expression)

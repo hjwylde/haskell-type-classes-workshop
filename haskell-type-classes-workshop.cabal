@@ -30,12 +30,13 @@ executable haskell-workshop
 library
     hs-source-dirs:     src/
     exposed-modules:
-        Definitions
+        Definition
+        Executor
         MyEither
         MyIdentity
         MyMaybe
         Parser
-        SimpleRuby
+        SimpleJava
 
     default-language:   Haskell2010
     build-depends:
@@ -49,7 +50,9 @@ test-suite haskell-type-classes-workshop-test
     other-modules:
         Toc1
         Toc2
-        Toc4
+        Toc4a
+        Toc4b
+        Toc4c
 
     default-language:   Haskell2010
     build-depends:

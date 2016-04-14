@@ -1,4 +1,4 @@
-module Toc4 where
+module Toc4a where
 
 import Control.Applicative
 

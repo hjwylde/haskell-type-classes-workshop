@@ -3,6 +3,7 @@
 A Haskell workshop on type classes for Powershop.
 
 While I'm introducing everything:
+
 ```bash
 brew install haskell-stack
 git clone https://github.com/hjwylde/haskell-type-classes-workshop
@@ -14,9 +15,9 @@ stack setup && stack build && stack exec haskell-workshop
 
 1. Type classes
 2. Functors, applicatives and monads
-3. Simple Ruby
+3. Simple Java
 4. Parsing
-5. Reader monad
+5. State monad
 6. Writer monad
 7. Where to next?
 
@@ -32,7 +33,7 @@ git checkout toc/1
 Using `MyIdentity`, `MyMaybe` and `MyEither`:
 
 * Deriving the `Show` type class
-* Writing `Show` type class instances *exercise*
+* **Exercise** Writing `Show` type class instances
 
 **Tip:**
 Have a separate terminal open running `stack build --test --file-watch` for live updates on how
@@ -50,24 +51,25 @@ git checkout toc/2
 
 Using `MyIdentity`, `MyMaybe` and `MyEither`:
 
-* Writing `Functor`, `Applicative` and `Monad` instances *exercise*
+* Kinds
+* **Exercise** Writing `Functor`, `Applicative` and `Monad` instances
 
-### 3. Simple Ruby
+### 3. Simple Java
 
 ```bash
 git checkout toc/3
 ```
 
-* Statements and expressions
+* Programs, statements and expressions
 
-Using `Statement` and `Expression`:
+Using `Program`, `Statement` and `Expression`:
 
 * Writing `Show` type class instances
 
 ### 4. Parsing
 
 ```bash
-git checkout toc/4
+git checkout toc/4a
 ```
 
 * A brief explanation of lexing, abstract syntax trees and parsing
@@ -75,39 +77,51 @@ git checkout toc/4
 
 Using `Parser`:
 
-* Writing `Functor`, `Applicative` and `Monad` instances *exercise*
+* **Exercise** Writing `Functor`, `Applicative` and `Monad` instances
 * Utility functions to work with `Parser`
-* Writing a `Statement` and `Expression` parser *exercise*
-* `Alternative` definition and type class instance for `Parser`
-* Extending Simple Ruby
 
-### 5. Reader monad
+```bash
+git checkout toc/4b
+```
+
+* **Exercise** Writing a `Statement` and `Expression` parser
+
+```bash
+git checkout toc/4c
+```
+
+* `Alternative` definition and type class instance for `Parser`
+* **Exercise** Writing a `Program` parser
+
+*There is no `git checkout` for this next exercise.*
+
+* **Exercise** Extending Simple Java with assignments and a pre-increment function
+
+### 5. State monad
 
 ```bash
 git checkout toc/5
 ```
 
-* `Reader` concept
+* `State` concept
 
-Using `Reader`:
+Using `State`:
 
-* Writing the `Reader` definition and type classes *exercise*
-* Writing a `reduce` function for Simple Ruby *exercise*
+* **Exercise** Writing the `State` definition and type classes
+* **Exercise** Writing `simplifyProgram`, `simplifyStatement` and `simplifyExpression` functions for Simple Java
 
 ### 6. Writer monad
 
-```bash
-git checkout toc/6
-```
+*There is no `git checkout` for the next exercise.*
 
 * `Writer` concept
 
 Using `Writer`:
 
-* Writing the `Writer` definition and type classes *exercise*
-* Adding a `print` function to lambda calculus and `reduce`
+* **Exercise** Writing the `Writer` definition and type classes
+* Updating the `run` function to use the `Writer` monad
 
 ### 7. Where to next?
 
-* State monad
+* Reader monad
 * Monad transformers (ReaderT, WriterT, StateT)
